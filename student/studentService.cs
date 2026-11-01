@@ -8,12 +8,11 @@ namespace SchoolManagementSystem.StudentServices
         StudentRepository repository = new StudentRepository();
         StudentBusiness business = new StudentBusiness();
 
-        // ADD STUDENT
         public bool AddStudent(Student s)
         {
             List<Student> students = repository.GetAllStudents();
 
-            if (students.Count >= 200)
+            if (students.Count >=1000)
                 return false;
 
             if (!business.ValidateStudent(s))
@@ -37,7 +36,7 @@ namespace SchoolManagementSystem.StudentServices
             return true;
         }
 
-        // SHOW ALL STUDENTS
+       
         public List<Student> GetAllStudents()
         {
             List<Student> students = repository.GetAllStudents();
@@ -49,7 +48,7 @@ namespace SchoolManagementSystem.StudentServices
             return students;
         }
 
-        // SEARCH STUDENT
+       
         public Student SearchStudent(int id, int classNo)
         {
             List<Student> students = repository.GetAllStudents();
@@ -61,11 +60,9 @@ namespace SchoolManagementSystem.StudentServices
                     return s;
                 }
             }
-
             return null;
         }
 
-        // UPDATE STUDENT
         public bool UpdateStudent(int searchID, int searchClass, Student updatedStudent)
         {
             List<Student> students = repository.GetAllStudents();
@@ -89,11 +86,9 @@ namespace SchoolManagementSystem.StudentServices
 
                     s.Name = updatedStudent.Name;
                     s.ClassNo = updatedStudent.ClassNo;
-
                     s.Math = updatedStudent.Math;
                     s.English = updatedStudent.English;
                     s.Computer = updatedStudent.Computer;
-
                     business.CalculateResult(s);
 
                     repository.SaveAllStudents(students);
@@ -105,15 +100,14 @@ namespace SchoolManagementSystem.StudentServices
             return false;
         }
 
-        // DELETE STUDENT
+       
         public bool DeleteStudent(int id, int classNo)
         {
             List<Student> students = repository.GetAllStudents();
 
             for (int i = 0; i < students.Count; i++)
             {
-                if (students[i].ID == id &&
-                    students[i].ClassNo == classNo)
+                if (students[i].ID == id && students[i].ClassNo == classNo)
                 {
                     students.RemoveAt(i);
 
@@ -126,7 +120,7 @@ namespace SchoolManagementSystem.StudentServices
             return false;
         }
 
-        // SHOW TOPPER
+       
         public Student ShowTopper(int classNo)
         {
             if (classNo < 1 || classNo > 10)
@@ -140,8 +134,7 @@ namespace SchoolManagementSystem.StudentServices
             {
                 if (s.ClassNo == classNo)
                 {
-                    if (topper == null ||
-                        s.Percentage > topper.Percentage)
+                    if (topper == null || s.Percentage > topper.Percentage)
                     {
                         topper = s;
                     }
@@ -151,7 +144,6 @@ namespace SchoolManagementSystem.StudentServices
             return topper;
         }
 
-        // SHOW FAILED STUDENTS
         public List<Student> ShowFailedStudents(int classNo)
         {
             List<Student> students = repository.GetAllStudents();
@@ -172,7 +164,7 @@ namespace SchoolManagementSystem.StudentServices
             return failedStudents;
         }
 
-        // SORT STUDENTS BY CLASS
+        
         public void SortStudents(List<Student> students)
         {
             for (int i = 0; i < students.Count - 1; i++)

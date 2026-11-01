@@ -9,17 +9,22 @@ namespace school_management_sysytem.Admin
 
         public AdminModel GetAdmin()
         {
-            if (!File.Exists(filePath))
+            if (File.Exists(filePath))
             {
                 StreamWriter writer = new StreamWriter(filePath);
+                writer.WriteLine("admin123");
                 writer.WriteLine("2456");
+                
                 writer.Close();
+                
             }
 
             StreamReader reader = new StreamReader(filePath);
 
             AdminModel a = new AdminModel();
+            a.Username = reader.ReadLine();
             a.Password = reader.ReadLine();
+           
 
             reader.Close();
 

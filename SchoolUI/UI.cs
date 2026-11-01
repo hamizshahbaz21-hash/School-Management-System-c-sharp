@@ -16,11 +16,15 @@ namespace school_management_sysytem.UI
             int menu = 0;
             do
             {
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
                 Console.WriteLine("\n====================================");
                 Console.WriteLine("       SCHOOL MANAGEMENT SYSTEM");
                 Console.WriteLine("====================================");
+                Console.ResetColor();
+                Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("1. Admin Menu");
                 Console.WriteLine("2. Student Menu");
+                Console.ResetColor();
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("3. Exit");
                 Console.ResetColor();
@@ -49,12 +53,15 @@ namespace school_management_sysytem.UI
             } while (menu != 3);
         }
 
-        // ADMIN SIGN IN
+        
         void AdminLogin()
         {
             AdminModel a = new AdminModel();
 
-            Console.Write("\nEnter Admin Password: ");
+           
+            Console.WriteLine("Enter Admin username");
+            a.Username = Console.ReadLine();
+            Console.Write("Enter Admin Password: ");
             a.Password = Console.ReadLine();
 
             if (adminService.LoginAdmin(a))
@@ -75,9 +82,12 @@ namespace school_management_sysytem.UI
             int choice = 0;
             do
             {
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
                 Console.WriteLine("\n====================================");
                 Console.WriteLine("           ADMIN MENU");
                 Console.WriteLine("====================================");
+                Console.ResetColor();
+                Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("1. Add Student");
                 Console.WriteLine("2. Show All Students");
                 Console.WriteLine("3. Search Student");
@@ -85,6 +95,7 @@ namespace school_management_sysytem.UI
                 Console.WriteLine("5. Delete Student");
                 Console.WriteLine("6. Show Topper");
                 Console.WriteLine("7. Show Failed Students");
+                Console.ResetColor();
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("8. Sign Out");
                 Console.ResetColor();
@@ -142,7 +153,7 @@ namespace school_management_sysytem.UI
             else
                 Console.WriteLine("Student Not Added! Check Details or Student Limit.");
         }
-        // SHOW ALL STUDENTS
+       
         void ShowStudents()
         {
             List<Student> students = studentService.GetAllStudents();
@@ -268,6 +279,7 @@ namespace school_management_sysytem.UI
             Student s = studentService.SearchStudent(searchID, searchClass);
             if (s != null)
             {
+                Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("\n========== YOUR RESULT ==========");
                 Console.WriteLine("ID: " + s.ID);
                 Console.WriteLine("Name: " + s.Name);
@@ -275,6 +287,7 @@ namespace school_management_sysytem.UI
                 Console.WriteLine("Total Marks: " + s.TotalMarks);
                 Console.WriteLine("Percentage: " + s.Percentage + "%");
                 Console.WriteLine("Grade: " + s.Grade);
+                Console.ResetColor();
             }
             else
             {

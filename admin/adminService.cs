@@ -1,4 +1,5 @@
-﻿using AdminModel = SchoolManagementSystem.Models.Admin;
+﻿using System.IO;
+using AdminModel = SchoolManagementSystem.Models.Admin;
 
 namespace school_management_sysytem.Admin
 {

@@ -7,23 +7,30 @@ namespace SchoolManagementSystem.StudentServices
         public bool ValidateStudent(Student s)
         {
             if (s.ID <= 0)
+            {
                 return false;
-
+            }
             if (s.Name == "")
+            {
                 return false;
-
+            }
             if (s.ClassNo < 1 || s.ClassNo > 10)
+            {
                 return false;
-
+            }
             if (s.Math < 0 || s.Math > 100)
+            {
                 return false;
-
+            }
             if (s.English < 0 || s.English > 100)
-                return false;
+            {
 
+                return false;
+            }
             if (s.Computer < 0 || s.Computer > 100)
+            {
                 return false;
-
+            }
             return true;
         }
 

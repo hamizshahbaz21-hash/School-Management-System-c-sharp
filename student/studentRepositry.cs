@@ -51,17 +51,7 @@ namespace SchoolManagementSystem.StudentServices
 
             foreach (Student s in students)
             {
-                writer.WriteLine(
-                    s.ID + "," +
-                    s.Name + "," +
-                    s.ClassNo + "," +
-                    s.Math + "," +
-                    s.English + "," +
-                    s.Computer + "," +
-                    s.TotalMarks + "," +
-                    s.Percentage + "," +
-                    s.Grade
-                );
+                writer.WriteLine(s.ID + "," +s.Name + "," +s.ClassNo + "," +s.Math + "," +s.English + "," +s.Computer + "," +s.TotalMarks + "," +s.Percentage + "," +s.Grade);
             }
 
             writer.Close();
