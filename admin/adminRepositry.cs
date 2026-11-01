@@ -1,0 +1,29 @@
+﻿using System.IO;
+using AdminModel = SchoolManagementSystem.Models.Admin;
+
+namespace school_management_sysytem.Admin
+{
+    public class AdminRepository
+    {
+        string filePath = "admin.txt";
+
+        public AdminModel GetAdmin()
+        {
+            if (!File.Exists(filePath))
+            {
+                StreamWriter writer = new StreamWriter(filePath);
+                writer.WriteLine("2456");
+                writer.Close();
+            }
+
+            StreamReader reader = new StreamReader(filePath);
+
+            AdminModel a = new AdminModel();
+            a.Password = reader.ReadLine();
+
+            reader.Close();
+
+            return a;
+        }
+    }
+}
